@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route("/generate-citation", methods=["POST"])
+@app.route("/generate-citation", methods=["GET"])
 def generate_citation():
     ecli = request.json.get("ecli")
     if not ecli:
