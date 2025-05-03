@@ -8,7 +8,7 @@ CORS(app)
 
 @app.route("/generate-citation", methods=["POST"])
 def generate_citation():
-    ecli = request.args.get("ecli")
+    ecli = request.json.get("ecli")
     if not ecli:
         return jsonify({"error": "ECLI is required"}), 400
     try:
