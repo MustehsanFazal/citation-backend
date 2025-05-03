@@ -1,10 +1,13 @@
+from flask_cors import CORS
 from flask import Flask, request, jsonify
 from scrape_and_parse import scrape_and_parse
 
 app = Flask(__name__)
+CORS(app)
 
-@app.route("/api", methods=["GET"])
-def api():
+
+@app.route("/generate-citation", methods=["POST"])
+def generate_citation():
     ecli = request.args.get("ecli")
     if not ecli:
         return jsonify({"error": "ECLI is required"}), 400
